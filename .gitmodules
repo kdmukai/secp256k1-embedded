@@ -1,3 +1,4 @@
 [submodule "secp256k1"]
 	path = secp256k1
 	url = https://github.com/kdmukai/secp256k1.git
+	branch = esp32_micropython_support
