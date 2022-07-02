@@ -562,9 +562,9 @@ STATIC mp_obj_t usecp256k1_ec_privkey_add(mp_obj_t privarg, const mp_obj_t tweak
 
     vstr_t priv2;
     vstr_init_len(&priv2, 32);
-    memcpy((byte*)priv2.buf, privbuf.buf, 32);
+    memcpy((unsigned char*)priv2.buf, privbuf.buf, 32);
 
-    int res = secp256k1_ec_privkey_tweak_add(ctx, priv2.buf, tweakbuf.buf);
+    int res = secp256k1_ec_privkey_tweak_add(ctx, (unsigned char*)priv2.buf, tweakbuf.buf);
     if(!res){ // never happens according to the API
         mp_raise_ValueError("Failed to tweak the private key");
         return mp_const_none;
