@@ -336,7 +336,7 @@ static mp_obj_t usecp256k1_nonce_function_default(mp_uint_t n_args, const mp_obj
         mp_raise_ValueError(MP_ERROR_TEXT("Failed to calculate nonce"));
         return mp_const_none;
     }
-    return mp_obj_new_str_from_vstr(&nonce);
+    return mp_obj_new_bytes_from_vstr(&nonce);
 }
 static MP_DEFINE_CONST_FUN_OBJ_VAR(usecp256k1_nonce_function_default_obj, 2, usecp256k1_nonce_function_default);
 
@@ -487,7 +487,7 @@ static mp_obj_t usecp256k1_ec_privkey_negate(mp_obj_t arg){
         mp_raise_ValueError(MP_ERROR_TEXT("Failed to negate the private key"));
         return mp_const_none;
     }
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_ec_privkey_negate_obj, usecp256k1_ec_privkey_negate);
@@ -511,7 +511,7 @@ static mp_obj_t usecp256k1_ec_pubkey_negate(mp_obj_t arg){
         mp_raise_ValueError(MP_ERROR_TEXT("Failed to negate the public key"));
         return mp_const_none;
     }
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_ec_pubkey_negate_obj, usecp256k1_ec_pubkey_negate);
@@ -569,7 +569,7 @@ static mp_obj_t usecp256k1_ec_privkey_add(mp_obj_t privarg, const mp_obj_t tweak
         mp_raise_ValueError("Failed to tweak the private key");
         return mp_const_none;
     }
-    return mp_obj_new_str_from_vstr(&priv2);
+    return mp_obj_new_bytes_from_vstr(&priv2);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_2(usecp256k1_ec_privkey_add_obj, usecp256k1_ec_privkey_add);
@@ -632,7 +632,7 @@ static mp_obj_t usecp256k1_ec_pubkey_add(mp_obj_t pubarg, const mp_obj_t tweakar
     vstr_t pubbuf2;
     vstr_init_len(&pubbuf2, 64);
     memcpy((byte*)pubbuf2.buf, pub.data, 64);
-    return mp_obj_new_str_from_vstr(&pubbuf2);
+    return mp_obj_new_bytes_from_vstr(&pubbuf2);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_2(usecp256k1_ec_pubkey_add_obj, usecp256k1_ec_pubkey_add);
@@ -753,7 +753,7 @@ static mp_obj_t usecp256k1_xonly_pubkey_from_pubkey(mp_obj_t arg){
     }
 
     mp_obj_t items[2];
-    items[0] = mp_obj_new_str_from_vstr(&vstr);
+    items[0] = mp_obj_new_bytes_from_vstr(&vstr);
     items[1] = mp_obj_new_int(parity);
     return mp_obj_new_tuple(2, items);
 }
@@ -816,7 +816,7 @@ static mp_obj_t usecp256k1_keypair_create(mp_obj_t arg){
         return mp_const_none;
     }
 
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_keypair_create_obj, usecp256k1_keypair_create);
 
