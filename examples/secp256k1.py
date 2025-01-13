@@ -45,7 +45,7 @@ def secp256k1_example():
     if secp256k1.ecdsa_verify(sig, msg, pubkey):
         print("Signature is valid")
     else:
-        printf("Invalid signature")
+        print("Invalid signature")
 
 if __name__ == '__main__':
     secp256k1_example()
