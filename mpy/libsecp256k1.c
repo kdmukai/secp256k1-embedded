@@ -71,7 +71,7 @@ static mp_obj_t usecp256k1_ec_pubkey_create(const mp_obj_t arg){
     vstr_init_len(&vstr, 64);
     memcpy((byte*)vstr.buf, pubkey.data, 64);
 
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_ec_pubkey_create_obj, usecp256k1_ec_pubkey_create);
@@ -110,7 +110,7 @@ static mp_obj_t usecp256k1_ec_pubkey_parse(const mp_obj_t arg){
     vstr_init_len(&vstr, 64);
     memcpy((byte*)vstr.buf, pubkey.data, 64);
 
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_ec_pubkey_parse_obj, usecp256k1_ec_pubkey_parse);
@@ -140,7 +140,7 @@ static mp_obj_t usecp256k1_ec_pubkey_serialize(mp_uint_t n_args, const mp_obj_t 
     vstr_t vstr;
     vstr_init_len(&vstr, len);
     memcpy((byte*)vstr.buf, out, len);
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_VAR(usecp256k1_ec_pubkey_serialize_obj, 1, usecp256k1_ec_pubkey_serialize);
@@ -164,7 +164,7 @@ static mp_obj_t usecp256k1_ecdsa_signature_parse_compact(const mp_obj_t arg){
     vstr_init_len(&vstr, 64);
     memcpy((byte*)vstr.buf, sig.data, 64);
 
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_ecdsa_signature_parse_compact_obj, usecp256k1_ecdsa_signature_parse_compact);
@@ -184,7 +184,7 @@ static mp_obj_t usecp256k1_ecdsa_signature_parse_der(const mp_obj_t arg){
     vstr_init_len(&vstr, 64);
     memcpy((byte*)vstr.buf, sig.data, 64);
 
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_ecdsa_signature_parse_der_obj, usecp256k1_ecdsa_signature_parse_der);
@@ -211,7 +211,7 @@ static mp_obj_t usecp256k1_ecdsa_signature_serialize_der(const mp_obj_t arg){
     vstr_init_len(&vstr, len);
     memcpy((byte*)vstr.buf, out, len);
 
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_ecdsa_signature_serialize_der_obj, usecp256k1_ecdsa_signature_serialize_der);
@@ -230,7 +230,7 @@ static mp_obj_t usecp256k1_ecdsa_signature_serialize_compact(const mp_obj_t arg)
     vstr_t vstr;
     vstr_init_len(&vstr, 64);
     secp256k1_ecdsa_signature_serialize_compact(ctx, (byte*)vstr.buf, &sig);
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_ecdsa_signature_serialize_compact_obj, usecp256k1_ecdsa_signature_serialize_compact);
@@ -288,7 +288,7 @@ static mp_obj_t usecp256k1_ecdsa_signature_normalize(const mp_obj_t arg){
     vstr_init_len(&vstr, 64);
     secp256k1_ecdsa_signature_normalize(ctx, &sig2, &sig);
     memcpy(vstr.buf, sig2.data, 64);
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_1(usecp256k1_ecdsa_signature_normalize_obj, usecp256k1_ecdsa_signature_normalize);
@@ -445,7 +445,7 @@ static mp_obj_t usecp256k1_ecdsa_sign(mp_uint_t n_args, const mp_obj_t *args){
     vstr_init_len(&vstr, 64);
     memcpy((byte*)vstr.buf, sig.data, 64);
 
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 static MP_DEFINE_CONST_FUN_OBJ_VAR(usecp256k1_ecdsa_sign_obj, 2, usecp256k1_ecdsa_sign);
 
@@ -726,7 +726,7 @@ static mp_obj_t usecp256k1_ec_pubkey_combine(mp_uint_t n_args, const mp_obj_t *a
         free(pubkeys[i]);
     }
     free(pubkeys);
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_VAR(usecp256k1_ec_pubkey_combine_obj, 2, usecp256k1_ec_pubkey_combine);
@@ -881,7 +881,7 @@ static mp_obj_t usecp256k1_schnorrsig_sign(mp_uint_t n_args, const mp_obj_t *arg
     vstr_init_len(&vstr, 64);
     memcpy((byte*)vstr.buf, sig, 64);
 
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 
 static MP_DEFINE_CONST_FUN_OBJ_VAR(usecp256k1_schnorrsig_sign_obj, 2, usecp256k1_schnorrsig_sign);
@@ -938,7 +938,7 @@ static mp_obj_t usecp256k1_ecdsa_sign_recoverable(mp_uint_t n_args, const mp_obj
     vstr_init_len(&vstr, 65);
     memcpy((byte*)vstr.buf, sig.data, 65);
 
-    return mp_obj_new_str_from_vstr(&vstr);
+    return mp_obj_new_bytes_from_vstr(&vstr);
 }
 static MP_DEFINE_CONST_FUN_OBJ_VAR(usecp256k1_ecdsa_sign_recoverable_obj, 2, usecp256k1_ecdsa_sign_recoverable);
 
