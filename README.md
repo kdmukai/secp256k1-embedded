@@ -16,6 +16,8 @@ Tested on ESP32 (M5Stack, TTGO) and STM32F469I-Discovery, but should work on any
 
 Clone with `--recursive` flag to the folder where you store user modules.
 
+Run the simple `modify.sh` script in `mpy/v1_25_compatibility`.
+
 Compile MicroPython for your board with user modules and `CFLAGS_EXTRA=-DMODULE_SECP256K1_ENABLED=1` flag. For example:
 
 ```sh
