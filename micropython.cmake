@@ -14,8 +14,10 @@ target_include_directories(secp256k1 INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}/secp256k1/src
     ${CMAKE_CURRENT_LIST_DIR}/mpy/config
 )
-target_compile_options(secp256k1 INTERFACE
+target_compile_definitions(secp256k1 INTERFACE
     -DHAVE_CONFIG_H
+)
+target_compile_options(secp256k1 INTERFACE
     -Wno-unused-function
     -Wno-error
     -O2
